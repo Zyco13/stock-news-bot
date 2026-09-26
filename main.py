@@ -41,9 +41,14 @@ def summarize(symbol, item):
 
 見出し: {item['headline']}
 本文: {item['summary']}"""
-    res = client.models.generate_content(model="gemini-3.1-flash-lite", contents=prompt)
-    return res.text
-
+        for attempt in range(3):
+            try:
+                res = client.models.generate_content(model="gemini-3.1-flash-lite", contents=prompt)
+                return res.text or "関係なし"
+            except Exception as e:
+                print(f"{symbol}: 要約に失敗（{attempt + 1}回目）: {e}")
+                time.sleep(30)
+        return "（混雑のため要約できませんでした）"
 
 def send(text):
     """Discordに送る。Webhookが未設定なら画面に表示するだけ"""
