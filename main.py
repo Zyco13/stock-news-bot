@@ -10,8 +10,8 @@ FINNHUB_KEY = os.environ["FINNHUB_KEY"]
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")  # まだ無くても動く
 
-WATCHLIST = ["XOM", "ADM", "AAPL", "MU", "SNDK", "CRWV", "AMZN"]
-NEWS_PER_SYMBOL = 3
+WATCHLIST = ["GOOG", "AAPL", "META", "AMZN", "MSFT", "NVDA", "TSLA", "MU", "PLTR", "AVGO", "SPCX", "AMD", "CRWV","ARM", "INTC", "COHR", "CRWD","SNDK" ]
+NEWS_PER_SYMBOL = 2
 JST = timezone(timedelta(hours=9))
 
 client = genai.Client(api_key=GEMINI_API_KEY)
